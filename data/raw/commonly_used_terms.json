@@ -1,0 +1,202 @@
+[
+    {
+        "Abbreviation": "AB",
+        "Meaning": "Antibiotic"
+    },
+    {
+        "Abbreviation": "ALP",
+        "Meaning": "Liver Enzyme"
+    },
+    {
+        "Abbreviation": "ALT",
+        "Meaning": "Liver Enzyme"
+    },
+    {
+        "Abbreviation": "AOK",
+        "Meaning": "A Ok"
+    },
+    {
+        "Abbreviation": "BAR",
+        "Meaning": "Bright Alert Responsive"
+    },
+    {
+        "Abbreviation": "BC",
+        "Meaning": "Buster Collar"
+    },
+    {
+        "Abbreviation": "BCS",
+        "Meaning": "Body Condition Score"
+    },
+    {
+        "Abbreviation": "BG",
+        "Meaning": "Blood Glucose"
+    },
+    {
+        "Abbreviation": "BIOP",
+        "Meaning": "Been In Owners Possession"
+    },
+    {
+        "Abbreviation": "C+",
+        "Meaning": "Coughing"
+    },
+    {
+        "Abbreviation": "CCL",
+        "Meaning": "Cruciate Ligament"
+    },
+    {
+        "Abbreviation": "CE",
+        "Meaning": "Clinical Exam"
+    },
+    {
+        "Abbreviation": "CRT",
+        "Meaning": "Capillary Refill Time"
+    },
+    {
+        "Abbreviation": "CV",
+        "Meaning": "Cardiovascular"
+    },
+    {
+        "Abbreviation": "D",
+        "Meaning": "Diarrhoea"
+    },
+    {
+        "Abbreviation": "EAG",
+        "Meaning": "Empty Anal Glands"
+    },
+    {
+        "Abbreviation": "F\/W",
+        "Meaning": "Flea And Worming"
+    },
+    {
+        "Abbreviation": "GA",
+        "Meaning": "General Anaesthetic"
+    },
+    {
+        "Abbreviation": "GHE",
+        "Meaning": "General Health Exam"
+    },
+    {
+        "Abbreviation": "GI",
+        "Meaning": "Gastro Intestinal"
+    },
+    {
+        "Abbreviation": "HPC",
+        "Meaning": "Health Pet Club"
+    },
+    {
+        "Abbreviation": "HR",
+        "Meaning": "Heart Rate"
+    },
+    {
+        "Abbreviation": "HX",
+        "Meaning": "History"
+    },
+    {
+        "Abbreviation": "LF",
+        "Meaning": "Left Fore (Leg)"
+    },
+    {
+        "Abbreviation": "LH",
+        "Meaning": "Left Hind"
+    },
+    {
+        "Abbreviation": "MM",
+        "Meaning": "Mucus Membrane"
+    },
+    {
+        "Abbreviation": "NQR",
+        "Meaning": "Not Quite Right"
+    },
+    {
+        "Abbreviation": "O",
+        "Meaning": "Owner"
+    },
+    {
+        "Abbreviation": "OE",
+        "Meaning": "Otitis Externa"
+    },
+    {
+        "Abbreviation": "OR",
+        "Meaning": "Owner Reports"
+    },
+    {
+        "Abbreviation": "PMS",
+        "Meaning": "Pre-Molar Teeth"
+    },
+    {
+        "Abbreviation": "POC",
+        "Meaning": "Post Operation Check"
+    },
+    {
+        "Abbreviation": "PTS",
+        "Meaning": "Put To Sleep"
+    },
+    {
+        "Abbreviation": "REEX",
+        "Meaning": "Re-examine"
+    },
+    {
+        "Abbreviation": "RF",
+        "Meaning": "Right Fore (Leg)"
+    },
+    {
+        "Abbreviation": "RH",
+        "Meaning": "Right Hind"
+    },
+    {
+        "Abbreviation": "ROM",
+        "Meaning": "Range Of Motion"
+    },
+    {
+        "Abbreviation": "RP",
+        "Meaning": "Repeat Prescription"
+    },
+    {
+        "Abbreviation": "RR",
+        "Meaning": "Respiratory Rate"
+    },
+    {
+        "Abbreviation": "RX",
+        "Meaning": "Receive"
+    },
+    {
+        "Abbreviation": "S\/O",
+        "Meaning": "Sutras Out"
+    },
+    {
+        "Abbreviation": "T",
+        "Meaning": "Temperature"
+    },
+    {
+        "Abbreviation": "TM",
+        "Meaning": "Tympanic Membrane"
+    },
+    {
+        "Abbreviation": "TX",
+        "Meaning": "Treatment"
+    },
+    {
+        "Abbreviation": "UTD",
+        "Meaning": "Up To Date"
+    },
+    {
+        "Abbreviation": "V",
+        "Meaning": "Vomiting"
+    },
+    {
+        "Abbreviation": "VMI",
+        "Meaning": "Very Much Improved"
+    },
+    {
+        "Abbreviation": "WNL",
+        "Meaning": "Within Normal Limits"
+    },
+    {
+        "Abbreviation": "WT",
+        "Meaning": "Weight"
+    },
+    {
+        "Abbreviation": "YO",
+        "Meaning": "Years Old"
+    }
+]

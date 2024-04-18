@@ -91,12 +91,6 @@ venv.bak/
 
 # Streamlit
 streamlit_app.py
-# Data Files
-*.csv
-*.xls
-*.xlsx
-*.json
-*.data
 
 # Temporary files
 *.tmp
