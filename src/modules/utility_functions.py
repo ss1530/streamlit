@@ -1,6 +1,6 @@
 import re
 import json
-
+import pandas as pd
 
 def to_pascal_case(text):
     """
@@ -14,6 +14,13 @@ def to_pascal_case(text):
     """
     return " ".join(word.capitalize() for word in text.replace("_", " ").split())
 
+def pascal_to_space_pascal(pascal_string):
+    result = ""
+    for char in pascal_string:
+        if char.isupper() and result:
+            result += " "
+        result += char
+    return result
 
 def annotate_abbreviations(text, abbrev_dict):
     """Annotate abbreviations in text with HTML tooltips, adding color and background styling."""
@@ -66,3 +73,11 @@ def get_abbreviations_dict(filepath):
     )  # Load the JSON data using the previously defined load_file method
     abbreviations_dict = {item["Abbreviation"]: item["Meaning"] for item in data}
     return abbreviations_dict
+
+def load_xlsx(filepath):
+    sheets = {
+        sheet_name: pd.read_excel(filepath, sheet_name=sheet_name)
+        for sheet_name in pd.ExcelFile(filepath).sheet_names
+    }
+    return sheets
+
