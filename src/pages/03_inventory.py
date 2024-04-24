@@ -85,6 +85,9 @@ if st.session_state.get("selected_sheet") != selected_sheet:
 # Save selected tab to session state
 st.session_state.selected_sheet = selected_sheet
 
+# Display the number of results available
+st.write(f"{len(df)} results available")
+
 # Display the information in a grid of cards
 columns = st.columns(columns_per_page)
 
