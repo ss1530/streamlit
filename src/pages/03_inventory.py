@@ -1,6 +1,11 @@
+from typing import Counter
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 from modules.utility_functions import pascal_to_space_pascal
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 # Path to your cleaned data
 DATA_DIR = "data/cleaned/"
@@ -10,6 +15,61 @@ DATA_DIR = "data/cleaned/"
 def load_data(sheet_name):
     filename = f"{DATA_DIR}{''.join(sheet_name.split())}.csv"
     return pd.read_csv(filename)
+
+
+# Function to plot time-series analysis grouped by decade
+def plot_time_series(df, date_column, title):
+    df[date_column] = pd.to_datetime(df[date_column])
+    
+    # Group data by year
+    df['Year'] = df[date_column].dt.year
+    
+    # Count number of products per year
+    year_data = df.groupby('Year').size().reset_index(name='Count')
+    
+    # Group data by decade
+    df['Decade'] = (df['Year'] // 10) * 10
+    
+    # Count number of products per decade
+    decade_data = df.groupby('Decade').size().reset_index(name='Decade_Count')
+    
+    # Create a bar chart for the number of products per year
+    bar_fig = px.bar(year_data, x='Year', y='Count', labels={'Year': 'Year', 'Count': 'Number of Products'})
+    
+    # Create a line plot for the number of products per decade
+    line_fig = go.Figure()
+    line_fig.add_trace(go.Scatter(x=decade_data['Decade'], y=decade_data['Decade_Count'],
+                                   mode='lines+markers', name='Decade Count', line=dict(color='blue')))
+    
+    # Set the same y-axis range for both plots
+    y_max = max(year_data['Count'].max(), decade_data['Decade_Count'].max())
+    bar_fig.update_yaxes(range=[0, y_max])
+    line_fig.update_yaxes(range=[0, y_max])
+    
+    # Combine both plots
+    bar_fig.update_traces(marker_color='rgba(50, 171, 96, 0.7)', marker_line_color='rgba(50, 171, 96, 1)', 
+                          marker_line_width=1.5, opacity=0.7)
+    bar_fig.add_trace(line_fig.data[0])
+    
+    # Set layout properties
+    bar_fig.update_layout(title=title, xaxis_title='Year', yaxis_title='Number of Products', 
+                          legend_title_text='Legend', barmode='overlay', bargap=0.05)
+    
+    return bar_fig
+
+
+# Function to perform text analysis and plot word cloud as image
+def plot_word_cloud(df, column):
+    text = " ".join(df[column].dropna().values)
+    wordcloud = WordCloud(width=800, height=400, colormap="viridis").generate(text)
+
+    # Generate the word cloud image
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+
+    # Display the word cloud image using Streamlit
+    st.image(wordcloud.to_array(), use_column_width=True)
 
 
 # Tab names
@@ -59,6 +119,16 @@ with more_filters_expander:
         df = df[
             df["TherapeuticGroup"].str.contains(search_th_grp, case=False, na=False)
         ]
+
+# Display time-series analysis
+if "DateOfIssue" in df.columns:
+    st.plotly_chart(plot_time_series(df, "DateOfIssue", "Trend Analysis Over Time"))
+
+# Display word cloud for Active Substances
+if "ActiveSubstances" in df.columns:
+    st.write("Word Cloud for Active Substances")
+    plot_word_cloud(df, "ActiveSubstances")
+
 
 # Define number of rows and columns for each page
 rows_per_page = 6

@@ -26,7 +26,7 @@ all_consult_types = pd.Series(all_consult_types).map(to_pascal_case).unique()
 st.title("Consultation History")
 
 # Define tab selection based on user interaction
-tab_selection = st.selectbox("Select Species", ["Cats", "Dogs", "Other Species"])
+tab_selection = st.sidebar.selectbox("Select Species", ["Cats", "Dogs", "Other Species"])
 
 # Determine file path based on selection
 selected_file_path = (
@@ -37,7 +37,7 @@ selected_file_path = (
 df = pd.read_csv(selected_file_path)
 
 # Apply consultation type filter
-selected_types = st.multiselect(
+selected_types = st.sidebar.multiselect(
     "Filter by Consultation Type:",
     options=all_consult_types,
     default=all_consult_types,
@@ -52,13 +52,11 @@ items_per_page = 10  # Set the number of items you want per page
 max_pages = len(filtered_data) // items_per_page + (
     1 if len(filtered_data) % items_per_page > 0 else 0
 )
-current_page = st.slider("Select Page", 1, max_pages, 1)  # Slider for page selection
+current_page = st.sidebar.number_input("Page", 1, max_pages, 1)  # Input for page selection
 start_index = (
-    current_page - 1
-) * items_per_page  # Calculate the starting index of the current page
-end_index = (
-    start_index + items_per_page
-)  # Calculate the ending index of the current page
+    (current_page - 1) * items_per_page
+)  # Calculate the starting index of the current page
+end_index = start_index + items_per_page  # Calculate the ending index of the current page
 page_data = filtered_data.iloc[
     start_index:end_index
 ]  # Slice the DataFrame for the current page
