@@ -85,12 +85,24 @@ selected_sheet = st.selectbox("Product Inventory", tabs)
 # Load the data for the selected tab
 df = load_data(selected_sheet)
 
+# Controlled Drug filter logic with unique key
+# Controlled Drug filter logic with conditional display
+if selected_sheet != "Expired Products":
+    controlled_drug_options = ["2", "3", "4", "5", "N"]
+    selected_drugs = st.multiselect(
+        "Filter by Controlled Drug", 
+        controlled_drug_options, 
+        key=f"controlled_drug_{selected_sheet}"
+    )
+
+    if selected_drugs:
+        df = df[df["ControlledDrug"].isin(selected_drugs)]
+else:  # Explicitly disable/hide for Expired Products
+    st.write("**Controlled Drug filter not applicable for expired products.")
+        
 # Filter based on ControlledDrug flag
 controlled_drug_options = ["2", "3", "4", "5", "N"]
 selected_drugs = st.multiselect("Filter by Controlled Drug", controlled_drug_options)
-
-if selected_drugs:
-    df = df[df["ControlledDrug"].isin(selected_drugs)]
 
 # Add a collapsible section for more filters
 more_filters_expander = st.expander("More Filters", expanded=False)
@@ -177,6 +189,7 @@ else:
         "VMDProductNo",
         "MAHolder",
         "VMNo",
+        "ControlledDrug",
         "ActiveSubstances",
         "TargetSpecies",
         "DistributionCategory",
